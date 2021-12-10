@@ -1,7 +1,6 @@
-using Microsoft.Azure.Functions.Worker.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System.Threading.Tasks;
+using UrlShortener.Core.Configuration;
 
 namespace UrlShortener.Api
 {
@@ -10,8 +9,13 @@ namespace UrlShortener.Api
         public static void Main()
         {
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults()
-                .Build();
+                 .ConfigureFunctionsWorkerDefaults()
+                 .ConfigureServices(DependencyInjectionConfiguration.Configure)
+                 .ConfigureAppConfiguration((context, builder) =>
+                 {
+                     builder.AddEnvironmentVariables();
+                 })
+                 .Build();
 
             host.Run();
         }
