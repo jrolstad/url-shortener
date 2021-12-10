@@ -27,8 +27,17 @@ namespace UrlShortener.Api
         public async Task<HttpResponseData> Get([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route ="url/short/{id}")] HttpRequestData req,
             string id)
         {
-            var response = await _orchestrator.Get(req.GetRequestingUser(), id);
+            var response = await _orchestrator.GetById(req.GetRequestingUser(), id);
             return await req.OkResponseAsync(response);
+        }
+
+        [Function("url-shorten-resolve")]
+        public async Task<HttpResponseData> Resolve([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "url/{shortUrl}")] HttpRequestData req,
+            string shortUrl)
+        {
+            var response = await _orchestrator.GetByShortUrl(req.GetRequestingUser(), shortUrl);
+
+            return await req.RedirectResponseAsync(response);
         }
     }
 }

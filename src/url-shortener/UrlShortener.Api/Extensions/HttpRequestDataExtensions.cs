@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using UrlShortener.Core.Models;
 
 namespace UrlShortener.Api.Extensions
 {
@@ -32,6 +33,14 @@ namespace UrlShortener.Api.Extensions
         {
             var response = request.CreateResponse(HttpStatusCode.OK);
             await response.WriteAsJsonAsync(data);
+
+            return response;
+        }
+
+        public static async Task<HttpResponseData> RedirectResponseAsync(this HttpRequestData request, ShortUrlResponse data)
+        {
+            var response = request.CreateResponse(HttpStatusCode.Redirect);
+            // Add redirect location here
 
             return response;
         }

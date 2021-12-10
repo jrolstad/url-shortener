@@ -35,7 +35,7 @@ namespace UrlShortener.Core.Orchestrators
             return response;
         }
 
-        public async Task<ShortUrlResponse> Get(IEnumerable<ClaimsIdentity> user, string id)
+        public async Task<ShortUrlResponse> GetById(IEnumerable<ClaimsIdentity> user, string id)
         {
             if (string.IsNullOrWhiteSpace(id)) return new ShortUrlResponse { Id = id };
 
