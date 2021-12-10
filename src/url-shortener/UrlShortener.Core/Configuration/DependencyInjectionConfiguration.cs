@@ -21,6 +21,7 @@ namespace UrlShortener.Core.Configuration
             services.AddTransient<UrlShorteningOrchestrator>();
 
             services.AddTransient<ShortUrlMapper>();
+            services.AddTransient<UrlMapper>();
 
             services.AddTransient<UrlRepository>();
 

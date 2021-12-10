@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using UrlShortener.Core.Configuration.Cosmos;
 using UrlShortener.Core.Mappers;
 using UrlShortener.Core.Models;
+using UrlShortener.Core.Models.Data;
 using UrlShortener.Core.Services;
 
 namespace UrlShortener.Core.Repositories
@@ -23,6 +24,14 @@ namespace UrlShortener.Core.Repositories
             var data = _mapper.Map(toAdd);
 
             var responseData = await _cosmosDbService.Save(data, CosmosConfiguration.Containers.Urls);
+            var response = _mapper.Map(responseData);
+
+            return response;
+        }
+
+        public async Task<ShortUrl> Get(string id)
+        {
+            var responseData = await _cosmosDbService.Get<ShortUrlData>(id, CosmosConfiguration.Containers.Urls, CosmosConfiguration.DefaultPartitionKey);
             var response = _mapper.Map(responseData);
 
             return response;

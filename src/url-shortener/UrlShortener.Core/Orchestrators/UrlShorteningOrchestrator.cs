@@ -34,5 +34,15 @@ namespace UrlShortener.Core.Orchestrators
 
             return response;
         }
+
+        public async Task<ShortUrlResponse> Get(IEnumerable<ClaimsIdentity> user, string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) return new ShortUrlResponse { Id = id };
+
+            var savedData = await _repository.Get(id);
+            var response = _shortUrlMapper.MapResponse(savedData);
+
+            return response;
+        }
     }
 }
