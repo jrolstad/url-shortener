@@ -1,4 +1,4 @@
-﻿namespace UrlShortener.Core.Configuration
+﻿namespace UrlShortener.Core.Configuration.Cosmos
 {
     public static class CosmosConfiguration
     {

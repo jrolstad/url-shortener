@@ -1,5 +1,5 @@
 ﻿using System;
-using UrlShortener.Core.Configuration;
+using UrlShortener.Core.Configuration.Cosmos;
 
 namespace UrlShortener.Core.Mappers
 {

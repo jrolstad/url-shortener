@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using UrlShortener.Core.Configuration;
+using UrlShortener.Core.Configuration.Cosmos;
 using UrlShortener.Core.Mappers;
 using UrlShortener.Core.Models;
 using UrlShortener.Core.Services;

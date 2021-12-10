@@ -6,6 +6,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using UrlShortener.Core.Configuration.Cosmos;
 using UrlShortener.Core.Mappers;
 using UrlShortener.Core.Orchestrators;
 using UrlShortener.Core.Repositories;
